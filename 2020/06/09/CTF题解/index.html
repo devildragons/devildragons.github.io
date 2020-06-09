@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
 
   
   <title>CTF题解 | Dragon&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="Dragon's Blog">
   <meta name="description" content="WEB攻防世界攻防世界001 baby web将url修改为index.php页面跳转为1.php，对index.php页面抓包获得flag。 攻防世界002 Training-WWW-Robots由题意知该题目存在robots.txt文件。发现一个php页面，访问后获得flag. 攻防世界003 Web python template injection参考python模板注入 攻防世界004">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CTF题解">
 <meta property="og:url" content="http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Dragon&#39;s Blog">
 <meta property="og:description" content="WEB攻防世界攻防世界001 baby web将url修改为index.php页面跳转为1.php，对index.php页面抓包获得flag。 攻防世界002 Training-WWW-Robots由题意知该题目存在robots.txt文件。发现一个php页面，访问后获得flag. 攻防世界003 Web python template injection参考python模板注入 攻防世界004">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007u7C9Rly1ge3q8zkspmj30c109oglt.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007u7C9Rly1ge3qefjmq4j30ge04zgln.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007u7C9Rly1ge3qfmqngij30gy03b74c.jpg">
@@ -154,77 +159,205 @@
 <meta property="article:author" content="灬魔龙">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/007u7C9Rly1ge3q8zkspmj30c109oglt.jpg">
+
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Dragon&#39;s Blog">
+  <meta name="msapplication-starturl" content="http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Dragon&#39;s Blog">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
   
-    <link rel="alternate" href="/atom.xml" title="Dragon&#39;s Blog" type="application/atom+xml">
+    <meta property="article:published_time" content="Tue Jun 09 2020 14:39:11 GMT+0800">
+    <meta property="article:modified_time" content="Sun May 31 2020 16:17:21 GMT+0800">
+  
+
+  
+    <link rel="canonical" href="http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/">
+  
+
   
   
-    <link rel="icon" href="/favicon.png">
+
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
+
   
+<link rel="stylesheet" href="/css/mdui.css">
 <link rel="stylesheet" href="/css/style.css">
 
 <meta name="generator" content="Hexo 4.2.1"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Dragon&#39;s Blog</a>
-      </h1>
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-indigo mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">Dragon&#39;s Blog</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'Search'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="Enter the key words">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">灬魔龙</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i></div>
+      </div>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">Home</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">inbox</i>
+        <div class="mdui-list-item-content">Archive</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
         
-          <a class="main-nav-link" href="/">Home</a>
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2020/06/">June 2020<span class="mdui-ripple sidebar_archives-count">1</span></a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">chrome_reader_mode</i>
+        <div class="mdui-list-item-content">Category</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
         
-      </nav>
-      <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+          <a href="javascript:;" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme" style="justify-content: center;">No Categories</a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">Tag</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+        
+          <a href="javascript:;" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme" style="justify-content: center;">No Tags</a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">About</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="/tags" class="mdui-list-item mdui-ripple">Tags</a>
+    
+      <a href="/gallery" class="mdui-list-item mdui-ripple">Gallery</a>
+    
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">Links</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+          <a href="https://github.com" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">Github</a>
+        
+        
       </div>
     </div>
   </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-CTF题解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/09/CTF%E9%A2%98%E8%A7%A3/" class="article-date">
-  <time datetime="2020-06-09T06:39:11.287Z" itemprop="datePublished">2020-06-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
   
-    <h1 class="article-title" itemprop="name">
-      CTF题解
-    </h1>
-  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h1 id="攻防世界"><a href="#攻防世界" class="headerlink" title="攻防世界"></a><em>攻防世界</em></h1><h2 id="攻防世界001-baby-web"><a href="#攻防世界001-baby-web" class="headerlink" title="攻防世界001 baby web"></a>攻防世界001 baby web</h2><p>将url修改为index.php页面跳转为1.php，对index.php页面抓包获得flag。<br><img src="http://ww1.sinaimg.cn/large/007u7C9Rly1ge3q8zkspmj30c109oglt.jpg" alt=""></p>
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-3.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">CTF题解</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2020-06-09 / <i class="iconfont">&#xe601;</i> 灬魔龙</div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">Send to mobile phone</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACbUlEQVR42u3a207DQAwE0P7/T8MrErSd8Xa3oTp5Qr0lJ0ixNfbt66OPGx4eHh4eHh4e3sV4t/j4+fk/fvTXJ2efX7k2PDw8vJO8J4/aX7x7ryTI9pbl14aHh4d3npcUg3uXnj+4n1zcw/MmtwYPDw/varwoDghuTdu+4+Hh4f1fXtJSt1FC24jj4eHhXYfXNr6zEDZppt+WteDh4eHFvNkA7Mzfb5vv4eHh4W1eunrcUidx8JalKzw8PLwNvNlAq21/88HYSjCBh4eHd5K3MuafjbVWRl91jIuHh4e3gZeP/9sGOr9lbTEY1j08PDy8F/Ha0HZlxDVbTSjadzw8PLzNvOTEybt5mcmjijy8wMPDwzvJW/qhMtJt2/SkbCzVPTw8PLwX8dqBU74okA/S8pKDh4eH917eykO/DWqT2zSMSPDw8PA285JWNR90tQOtWTxRFAY8PDy8DbxZAJG02jN2XlTufgsPDw/vIK9dpVo58sAijzzw8PDwzvCSEGFlySApA/ktrgdgeHh4eBt4ectbNLWbm+kn38XDw8M7wpsNqBJSUn7a1YS6MODh4eFt5rWlIjrlwsJWS8XDw8M7ycsjiXbMPwtw2+KEh4eHd5KXj6xmg6u8LV4ZoeHh4eGd4bVHu1iQPMrb9a+ipcbDw8PbwJs9iGdLVPkZZxEzHh4e3kleWwzy8OJlEUO+uICHh4d3kNc+oNdLS/s7yT8GDw8P75q8lVZ4JZLYvhmBh4eHt4GXvJI3x23hwcPDw7sar129al9vi0EbEOPh4eGd5K0PwGbDsPWycWi+h4eHh/fRBx4eHh4eHh4e3gWObxw42CR5b9jnAAAAAElFTkSuQmCC">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=CTF题解&url=http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/&pic=http://yoursite.com/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">Share to Weibo</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=CTF题解&url=http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/&via=灬魔龙" target="_blank" class="mdui-ripple">Share to Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/" target="_blank" class="mdui-ripple">Share to Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/" target="_blank" class="mdui-ripple">Share to Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/&title=CTF题解" target="_blank" class="mdui-ripple">Share to LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Dragon&#39;s Blog&title=CTF题解&summary=&pics=http://yoursite.com/images/favicon.png&url=http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/" target="_blank" class="mdui-ripple">Share to QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/&text=CTF题解" target="_blank" class="mdui-ripple">Share to Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h1 id="攻防世界"><a href="#攻防世界" class="headerlink" title="攻防世界"></a><em>攻防世界</em></h1><h2 id="攻防世界001-baby-web"><a href="#攻防世界001-baby-web" class="headerlink" title="攻防世界001 baby web"></a>攻防世界001 baby web</h2><p>将url修改为index.php页面跳转为1.php，对index.php页面抓包获得flag。<br><img src="http://ww1.sinaimg.cn/large/007u7C9Rly1ge3q8zkspmj30c109oglt.jpg" alt=""></p>
 <h2 id="攻防世界002-Training-WWW-Robots"><a href="#攻防世界002-Training-WWW-Robots" class="headerlink" title="攻防世界002 Training-WWW-Robots"></a>攻防世界002 Training-WWW-Robots</h2><p>由题意知该题目存在robots.txt文件。<br><img src="http://ww1.sinaimg.cn/large/007u7C9Rly1ge3qefjmq4j30ge04zgln.jpg" alt=""><br>发现一个php页面，访问后获得flag.<br><img src="http://ww1.sinaimg.cn/large/007u7C9Rly1ge3qfmqngij30gy03b74c.jpg" alt=""></p>
 <h2 id="攻防世界003-Web-python-template-injection"><a href="#攻防世界003-Web-python-template-injection" class="headerlink" title="攻防世界003 Web python template injection"></a>攻防世界003 Web python template injection</h2><p>参考<a href="https://www.cnblogs.com/tr1ple/p/9415641.html" target="_blank" rel="noopener" title="python模板注入">python模板注入</a></p>
 <h2 id="攻防世界004-php-rce"><a href="#攻防世界004-php-rce" class="headerlink" title="攻防世界004 php_rce"></a>攻防世界004 php_rce</h2><h1 id="BUUOJ"><a href="#BUUOJ" class="headerlink" title="BUUOJ"></a><em>BUUOJ</em></h1><h2 id="HCTF-2018-WarmUp"><a href="#HCTF-2018-WarmUp" class="headerlink" title="[HCTF 2018]WarmUp"></a>[HCTF 2018]WarmUp</h2><p><img src="http://ww1.sinaimg.cn/large/007u7C9Rgy1gf9opzsedcj307q02g3yd.jpg" alt=""></p>
@@ -382,95 +515,54 @@ unicode欺骗
 <p>于是修改代码能读取flag并写入flag.hint文件中<br><img src="http://ww1.sinaimg.cn/large/007u7C9Rgy1gfbpdoahgmj30bp03wq2z.jpg" alt=""></p>
 <p>等待60秒查看获得flag。</p>
 
+      <blockquote class="mdui-m-t-5">
+        
+        <strong>PermaLink: </strong><a href="http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/">http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/</a>
+      </blockquote>
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/09/CTF%E9%A2%98%E8%A7%A3/" data-id="ckb7k5yo1000010t4fnic0z2o" class="article-share-link">Share</a>
+    <footer class="mdui-card-actions">
       
       
     </footer>
+    
+  </article>
+  
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   </div>
-  
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2019 - 2020 灬魔龙<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a>
     
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/06/09/CTF%E9%A2%98%E8%A7%A3/">CTF题解</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 灬魔龙<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
   </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">arrow_upward</i></button>
   
-    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
+<script src="/js/mdui.js"></script>
 <script src="/js/script.js"></script>
 
-
-
-
-  </div>
 </body>
 </html>
