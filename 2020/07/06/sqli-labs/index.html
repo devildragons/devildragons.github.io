@@ -66,8 +66,21 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007u7C9Rgy1ggio9ebof5j31840iwdne.jpg">
 <meta property="og:image" content="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggioaxx2p8j311u0j1wkp.jpg">
 <meta property="og:image" content="https://tva4.sinaimg.cn/large/007u7C9Rgy1ggiocjttaaj30xc0iijx0.jpg">
+<meta property="og:image" content="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggip4c5khbj30xl0kzq8z.jpg">
+<meta property="og:image" content="https://tva2.sinaimg.cn/large/007u7C9Rgy1ggip5js1jzj30wr0j6jwq.jpg">
+<meta property="og:image" content="https://tvax3.sinaimg.cn/large/007u7C9Rgy1ggipazyhyzj30tt0jw0yh.jpg">
+<meta property="og:image" content="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggipb8qjhqj30wu0lbq8z.jpg">
+<meta property="og:image" content="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggipd4gz1qj30wv0kodlu.jpg">
+<meta property="og:image" content="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggipdadtiqj312o0kywkv.jpg">
+<meta property="og:image" content="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggipks25inj30yy0lb0yu.jpg">
+<meta property="og:image" content="https://tvax2.sinaimg.cn/large/007u7C9Rgy1ggipnv1ilej30xp053aac.jpg">
+<meta property="og:image" content="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggiq9hyia9j30zq0kqteq.jpg">
+<meta property="og:image" content="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggiqbo9b54j30yf0in0y6.jpg">
+<meta property="og:image" content="https://tva4.sinaimg.cn/large/007u7C9Rgy1ggiqbufe53j30zg0k4afk.jpg">
+<meta property="og:image" content="https://tvax3.sinaimg.cn/large/007u7C9Rgy1ggiqc22xopj30zy0k20yd.jpg">
+<meta property="og:image" content="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggiqc857zcj30yh0kmdld.jpg">
 <meta property="article:published_time" content="2020-07-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-07T12:21:27.208Z">
+<meta property="article:modified_time" content="2020-07-07T13:30:22.490Z">
 <meta property="article:author" content="灬魔龙">
 <meta property="article:tag" content="sql注入">
 <meta name="twitter:card" content="summary">
@@ -89,7 +102,7 @@
 
   
     <meta property="article:published_time" content="Mon Jul 06 2020 00:00:00 GMT+0800">
-    <meta property="article:modified_time" content="Tue Jul 07 2020 20:21:27 GMT+0800">
+    <meta property="article:modified_time" content="Tue Jul 07 2020 21:30:22 GMT+0800">
   
 
   
@@ -229,7 +242,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-4.png" style="max-height: 240px;">
+      <img src="/images/random/material-15.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">SQL注入之sqli-labs学习</div>
@@ -297,7 +310,10 @@
 <h2 id="第八关"><a href="#第八关" class="headerlink" title="第八关"></a>第八关</h2><p><img src="https://tvax2.sinaimg.cn/large/007u7C9Rgy1gginkhpg66j310i0iw44b.jpg" alt=""><br>使用?id=1’ –+页面恢复正常。<br><img src="https://tvax4.sinaimg.cn/large/007u7C9Rgy1gginlbll8bj31540j90zo.jpg" alt=""><br>参考第七关尝试写入数据成功，然后上传木马连接。</p>
 <h2 id="第九关"><a href="#第九关" class="headerlink" title="第九关"></a>第九关</h2><p>发现无论输入什么页面都没有变化。<br><img src="https://tvax3.sinaimg.cn/large/007u7C9Rgy1gginr5d6zrj30x00ittdy.jpg" alt=""><br>使用?id=1’ and sleep(5) –+页面出现明显延迟，说明本关卡是时间盲注。<br><img src="https://tvax2.sinaimg.cn/large/007u7C9Rgy1gginz6wrbrj30uj0j8gqi.jpg" alt=""><br>通过页面的延迟猜出数据库是8个字符。<br><img src="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggio1a1p8nj30vn0iuaf5.jpg" alt=""><br>逐个字符猜测得到数据库为security。<br><img src="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggio74gbfqj317h0ix106.jpg" alt=""><br>通过类似操作猜出表名users。<br><img src="https://tva1.sinaimg.cn/large/007u7C9Rgy1ggio9ebof5j31840iwdne.jpg" alt=""><br>进而猜出列名password。<br><img src="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggioaxx2p8j311u0j1wkp.jpg" alt=""><br>进而猜出password中的信息。</p>
 <h2 id="第十关"><a href="#第十关" class="headerlink" title="第十关"></a>第十关</h2><p><img src="https://tva4.sinaimg.cn/large/007u7C9Rgy1ggiocjttaaj30xc0iijx0.jpg" alt=""><br>同样是时间盲注，只不过是双引号注入。注入过程参考第九关。</p>
-<h2 id="第十一关"><a href="#第十一关" class="headerlink" title="第十一关"></a>第十一关</h2>
+<h2 id="第十一关"><a href="#第十一关" class="headerlink" title="第十一关"></a>第十一关</h2><p>从第十一关开始使用post的方式来提交数据<br><img src="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggip4c5khbj30xl0kzq8z.jpg" alt=""><br><img src="https://tva2.sinaimg.cn/large/007u7C9Rgy1ggip5js1jzj30wr0j6jwq.jpg" alt=""><br>使用万能密码以及order by测试出有两个显示位。<br><img src="https://tvax3.sinaimg.cn/large/007u7C9Rgy1ggipazyhyzj30tt0jw0yh.jpg" alt=""><br><img src="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggipb8qjhqj30wu0lbq8z.jpg" alt=""><br><img src="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggipd4gz1qj30wv0kodlu.jpg" alt=""><br><img src="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggipdadtiqj312o0kywkv.jpg" alt=""><br>然后使用联合注入依次查出数据库，表名，列名，列中的信息。</p>
+<h2 id="第十二关"><a href="#第十二关" class="headerlink" title="第十二关"></a>第十二关</h2><p><img src="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggipks25inj30yy0lb0yu.jpg" alt=""><br>经过测试发现本关是(“”)的字符闭合方式。<br><img src="https://tvax2.sinaimg.cn/large/007u7C9Rgy1ggipnv1ilej30xp053aac.jpg" alt=""><br>然后参考第十一关对本关进行联合注入。</p>
+<h2 id="第十三关"><a href="#第十三关" class="headerlink" title="第十三关"></a>第十三关</h2><p><img src="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggiq9hyia9j30zq0kqteq.jpg" alt=""><br>经过测试发现本关是以(‘’)字符的闭合方式，但是本题没有显示位，但是会有报错语句，所以使用报错注入的方法进行注入。<br><img src="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggiqbo9b54j30yf0in0y6.jpg" alt=""><br><img src="https://tva4.sinaimg.cn/large/007u7C9Rgy1ggiqbufe53j30zg0k4afk.jpg" alt=""><br><img src="https://tvax3.sinaimg.cn/large/007u7C9Rgy1ggiqc22xopj30zy0k20yd.jpg" alt=""><br><img src="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggiqc857zcj30yh0kmdld.jpg" alt=""><br>通过报错注入获得数据库，表名，列名，列中的信息。</p>
+<h2 id="第十四关"><a href="#第十四关" class="headerlink" title="第十四关"></a>第十四关</h2>
       <blockquote class="mdui-m-t-5">
         
         <strong>本文链接：</strong><a href="https://devildragons.github.io/2020/07/06/sqli-labs/">https://devildragons.github.io/2020/07/06/sqli-labs/</a>
