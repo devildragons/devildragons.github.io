@@ -110,8 +110,21 @@
 <meta property="og:image" content="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggrxjzrua5j31h20osdpt.jpg">
 <meta property="og:image" content="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggrxlylr13j31gl0o9tik.jpg">
 <meta property="og:image" content="https://tva2.sinaimg.cn/large/007u7C9Rgy1ggrxmxeq80j31d90o0dp8.jpg">
+<meta property="og:image" content="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggry1sm3eoj30ne05kgly.jpg">
+<meta property="og:image" content="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggry9ipe8ij31fo0q97cw.jpg">
+<meta property="og:image" content="https://tva4.sinaimg.cn/large/007u7C9Rgy1ggryc861tcj31gn0opahl.jpg">
+<meta property="og:image" content="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggryei7lxvj31gp0ojdnd.jpg">
+<meta property="og:image" content="https://tva2.sinaimg.cn/large/007u7C9Rgy1ggryh69yz9j31eh0og7bi.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007u7C9Rgy1ggryjrxus4j30l503ugls.jpg">
+<meta property="og:image" content="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggryuxtx84j30j80c0wfa.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007u7C9Rgy1ggrz7cg9nuj30id04jt8s.jpg">
+<meta property="og:image" content="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggrz7qziu3j31bk0l77bv.jpg">
+<meta property="og:image" content="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggrzchcc8qj31330ly454.jpg">
+<meta property="og:image" content="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggrzcol0f8j31490l0wlm.jpg">
+<meta property="og:image" content="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggrzcu2srbj312y0lzagv.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007u7C9Rgy1ggrzd2llzvj315g0lsdn5.jpg">
 <meta property="article:published_time" content="2020-07-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-15T12:32:38.963Z">
+<meta property="article:modified_time" content="2020-07-15T13:32:28.221Z">
 <meta property="article:author" content="灬魔龙">
 <meta property="article:tag" content="sql注入">
 <meta name="twitter:card" content="summary">
@@ -133,7 +146,7 @@
 
   
     <meta property="article:published_time" content="Mon Jul 06 2020 00:00:00 GMT+0800">
-    <meta property="article:modified_time" content="Wed Jul 15 2020 20:32:38 GMT+0800">
+    <meta property="article:modified_time" content="Wed Jul 15 2020 21:32:28 GMT+0800">
   
 
   
@@ -273,7 +286,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-16.png" style="max-height: 240px;">
+      <img src="/images/random/material-17.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">SQL注入之sqli-labs学习</div>
@@ -351,7 +364,10 @@
 <h2 id="第十八关"><a href="#第十八关" class="headerlink" title="第十八关"></a>第十八关</h2><p><img src="https://tva4.sinaimg.cn/large/007u7C9Rgy1ggrq8mmz13j30v20hh0t7.jpg" alt=""><br><img src="https://tva4.sinaimg.cn/large/007u7C9Rgy1ggrr7ie0hdj30hv047glp.jpg" alt=""><br><img src="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggrrgo3ekpj3105023aa5.jpg" alt=""><br>打开发现显示了IP地址，百度后发现，本关是header头注入，修改http头的User-Agent参数。<br>查看源码发现。本关对用户名和密码都进行了各种转义的处理，所以都不能注入。并且发现了insert语句，他把user-agent插入到了数据库。<br><img src="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggrqf7jw0ij30yi0jg0yy.jpg" alt=""><br>需要登录成功后才能注入。<br><img src="https://tva2.sinaimg.cn/large/007u7C9Rgy1ggrrqh66ndj31320oz42d.jpg" alt=""><br>修改user-agent的值使其符合整个insert into的语句，闭合后应该为indert into table values(‘1’,1,1)#’,’IP’,’Username’),成功绕过。<br><img src="https://tvax2.sinaimg.cn/large/007u7C9Rgy1ggrrx7cba3j311i0okq6z.jpg" alt=""><br>接着使用报错注入获得数据库名security。<br><img src="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggrrze5svpj30w30omtci.jpg" alt=""><br>继续获得表名users。<br><img src="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggrs0xla4bj30ws0oitci.jpg" alt=""><br>获得列名password。<br><img src="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggrs2mpwgmj312b0phtcx.jpg" alt=""><br>获得列名中的信息。<br>参考：<a href="https://www.cnblogs.com/AmoBlogs/p/8677729.html" target="_blank" rel="noopener">https://www.cnblogs.com/AmoBlogs/p/8677729.html</a></p>
 <h2 id="第十九关"><a href="#第十九关" class="headerlink" title="第十九关"></a>第十九关</h2><p><img src="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggrwtl0g35j30yr0kcjxi.jpg" alt=""><br><img src="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggrwt1gezaj30vq02u74f.jpg" alt=""><br>和第十八关类似，只不过本关是将referer插入数据库。<br><img src="https://tvax3.sinaimg.cn/large/007u7C9Rgy1ggrwvpman5j31100q6tf4.jpg" alt=""><br>修改referer的值使其符合整个insert into的语句，闭合后应该为indert into table values(‘1’,1)#’,’IP’),成功绕过。<br>然后参考第十八进行报错注入。</p>
 <h2 id="第二十关"><a href="#第二十关" class="headerlink" title="第二十关"></a>第二十关</h2><p><img src="https://tva4.sinaimg.cn/large/007u7C9Rgy1ggrx712wtuj313a0gun52.jpg" alt=""><br>题目给了cookie:uname=admin所以这题应该是cookie注入。<br><img src="https://tvax3.sinaimg.cn/large/007u7C9Rgy1ggrxh6punyj31g50nun6j.jpg" alt=""><br><img src="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggrxjzrua5j31h20osdpt.jpg" alt=""><br><img src="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggrxlylr13j31gl0o9tik.jpg" alt=""><br><img src="https://tva2.sinaimg.cn/large/007u7C9Rgy1ggrxmxeq80j31d90o0dp8.jpg" alt=""><br>然后参考第十八关进行报错注入。</p>
-<h2 id="第二十一关"><a href="#第二十一关" class="headerlink" title="第二十一关"></a>第二十一关</h2>
+<h2 id="第二十一关"><a href="#第二十一关" class="headerlink" title="第二十一关"></a>第二十一关</h2><p><img src="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggry1sm3eoj30ne05kgly.jpg" alt=""><br>查看源代码发现本关是将cookie的内容base64解密后再运行，而且cookie是以(‘’)的字符闭合方式。<br><img src="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggry9ipe8ij31fo0q97cw.jpg" alt=""><br>构造payload：admin’) and updatexml(1,concat(0x7e,database(),0x7e),1)#base64加密后通过报错注入获得数据库名。<br><img src="https://tva4.sinaimg.cn/large/007u7C9Rgy1ggryc861tcj31gn0opahl.jpg" alt=""><br>构造payload:admin’) and updatexml(1,concat(0x7e,(select table_name from information_schema.tables where table_schema=”security” limit 3,1),0x7e),1)#base64加密后获得表名。<br><img src="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggryei7lxvj31gp0ojdnd.jpg" alt=""><br>构造payload:admin’) and updatexml(1,concat(0x7e,(select column_name from information_schema.columns where table_name=”users” limit 2,1),0x7e),1)#base64加密后获得列名。<br><img src="https://tva2.sinaimg.cn/large/007u7C9Rgy1ggryh69yz9j31eh0og7bi.jpg" alt=""><br>构造payload:admin’) and updatexml(1,concat(0x7e,(select password from users limit 0,1),0x7e),1)#base64加密后获得密码。</p>
+<h2 id="第二十二关"><a href="#第二十二关" class="headerlink" title="第二十二关"></a>第二十二关</h2><p><img src="https://tva1.sinaimg.cn/large/007u7C9Rgy1ggryjrxus4j30l503ugls.jpg" alt=""><br>通过查看源代码发现cookie是以双引号字符的闭合方式，和第二十一关一样是base64解密后再执。所以参考第二十一关进行报错注入，构造的payload为admin” and updatexml(1,payload,1)。</p>
+<h2 id="第二十三关"><a href="#第二十三关" class="headerlink" title="第二十三关"></a>第二十三关</h2><p><img src="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggryuxtx84j30j80c0wfa.jpg" alt=""><br>查看源代码发现注释符#和–被过滤掉了。<br><img src="https://tva1.sinaimg.cn/large/007u7C9Rgy1ggrz7cg9nuj30id04jt8s.jpg" alt=""><br>发现sql语句。<br><img src="https://tvax1.sinaimg.cn/large/007u7C9Rgy1ggrz7qziu3j31bk0l77bv.jpg" alt=""><br>不能使用注释符，所以构造payload:?id=999’ union select 1,2,3 ‘将单引号闭合。<br><img src="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggrzchcc8qj31330ly454.jpg" alt=""><br><img src="https://tva3.sinaimg.cn/large/007u7C9Rgy1ggrzcol0f8j31490l0wlm.jpg" alt=""><br><img src="https://tvax4.sinaimg.cn/large/007u7C9Rgy1ggrzcu2srbj312y0lzagv.jpg" alt=""><br><img src="https://tva1.sinaimg.cn/large/007u7C9Rgy1ggrzd2llzvj315g0lsdn5.jpg" alt=""><br>接着使用联合注入进行注入。</p>
+<h2 id="第二十四关"><a href="#第二十四关" class="headerlink" title="第二十四关"></a>第二十四关</h2>
       <blockquote class="mdui-m-t-5">
         
         <strong>本文链接：</strong><a href="https://devildragons.github.io/2020/07/06/sqli-labs/">https://devildragons.github.io/2020/07/06/sqli-labs/</a>
